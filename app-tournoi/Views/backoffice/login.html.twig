@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+	<section class="connexion mt-5 w-100">
+		<h1 class="text-white text-center">Connexion</h1>
+		<form method="post" action="{{ url('/login-check') }}" class="form-connexion w-50">
+			<div class="form-group">
+				<label for="pseudo" class="text-white">Pseudo :</label>
+				<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Pseudo">
+			</div>
+			<div class="form-group">
+				<label for="mdp" class="text-white">Mot de passe :</label>
+				<input type="password" class="form-control" id="mdp" name="password" placeholder="Mot de passe">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</section>	
+{% endblock %}
+{% block additional_js %}
+{% endblock %}

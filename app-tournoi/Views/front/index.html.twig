@@ -1,0 +1,137 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+	<section class="new_user mt-5 w-100">
+		{% if userExist == false %}
+			<form method="post" action="{{ url('/new-user') }}" class="form_accueil w-100">
+				<p class="text-center text-white">Inscrivez-vous pour participer au tournoi.</p>
+				<div class="form-row w-100">
+					<div class="col">
+						<label for="pseudo">Pseudo :</label>
+						<input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" class="form-control">
+					</div>
+					<div class="col mid">
+						<label for="plateforme">Plateforme :</label>
+						<select name="plateforme" id="plateforme"  class="form-control">
+							<option value="ps4">ps4</option>
+							<option value="pc">pc</option>
+							<option value="xbox">xbox</option>
+							<option value="switch">switch</option>
+						</select>
+					</div>
+					<input type="text" name="ip" value="{{ ip }}" hidden="hidden">
+					<div class="col">
+						<button class="btn btn-primary">S'inscrire</button>
+					</div>
+				</div>
+			</form> 
+		{% else %}
+			<p class="text-center text-white">Vous êtes inscrits pour le tournoi.</p>
+		{% endif %}
+	</section>
+	<hr class="hr"/>
+	<!-- Classement -->
+	<section class="mt-5 w-100 classement-accueil">
+		<h1 class="text-center text-white">Classement</h1>
+		<div class="d-flex flex-row w-100 mb-3">
+			{% for date in dates %}
+				<a class="btn btn-primary col-2 ml-5" href="{{ url('/') ~ date.date_tournoi }}">{{ date.date_tournoi }}</a>
+			{% endfor %}
+		</div>
+		<table class="table table-striped table-dark" id="classement-refrech">
+			<thead>
+				<tr>
+					<th scope="col">Pseudo</th>
+					<th scope="col">Plateforme</th>
+					<th scope="col">Partie 1</th>
+					<th scope="col">Partie 2</th>
+					<th scope="col">Partie 3</th>
+					<th scope="col">Partie 4</th>
+					<th scope="col">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for thejoueur in classement %}
+					<tr>
+						<th scope="row"> {{ thejoueur.joueur.pseudo }} </th>
+						<td> {{ thejoueur.joueur.plateforme }}</td>
+						<td> {{ thejoueur.parties.partie1 }}</td>
+						<td> {{ thejoueur.parties.partie2 }}</td>
+						<td> {{ thejoueur.parties.partie3 }}</td>
+						<td> {{ thejoueur.parties.partie4 }}</td>
+						{% set total = thejoueur.parties.partie1 + thejoueur.parties.partie2 + thejoueur.parties.partie3 + thejoueur.parties.partie4 %}
+						<td>{{ total }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<button class="btn btn-secondary" id="btnbareme">Voir le barème</button>
+	</section>
+	<!-- Barème -->
+	<section class="bareme">
+		<div class="zone-bareme">
+			<button class="btn-close-bareme"><i class="fas fa-times"></i></button>
+			<table class="table table-striped table-dark w-50 text-center mt-3" id="classement-refrech">
+				<thead>
+					<tr>
+						<th scope="col">Classement</th>
+						<th scope="col">Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Top 1</th>
+						<td>24 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 2</th>
+						<td>22 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 3</th>
+						<td>20 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 4</th>
+						<td>17 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 5-6</th>
+						<td>15 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 7-8</th>
+						<td>13 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 9-10</th>
+						<td>11 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 11-12</th>
+						<td>9 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 13-14</th>
+						<td>7 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 15-16</th>
+						<td>5 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 17-18</th>
+						<td>3 points</td>
+					</tr>
+					<tr>
+						<th scope="row">Top 19-20</th>
+						<td>1 point</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="text-white">1 point en plus par kill / 6 kills max par partie</p>
+		</div>
+	</section>
+{% endblock %}
+{% block additional_js %}
+{% endblock %}

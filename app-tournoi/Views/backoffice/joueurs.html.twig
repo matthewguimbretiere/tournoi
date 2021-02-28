@@ -1,0 +1,49 @@
+{% extends 'backoffice/layout.html.twig' %}
+{% block title %}Liste des joueurs{% endblock %}
+{% block content_back %}
+<div class="container">
+	<h1>Liste joueurs</h1>
+	<section class="mt-5 w-100 classement-accueil">
+		<h1 class="text-center text-white">Classement</h1>
+		<div class="d-flex flex-row w-100 mb-3">
+			{% for date in dates %}
+				<a class="btn btn-primary col-2 ml-5" href="{{ url('/backoffice/liste-joueurs/') ~ date.date_tournoi }}">{{ date.date_tournoi }}</a>
+			{% endfor %}
+		</div>
+		<table class="table table-striped table-dark" id="classement-refrech">
+			<thead>
+				<tr>
+					<th scope="col">Pseudo</th>
+					<th scope="col">Plateforme</th>
+					<th scope="col">Partie 1</th>
+					<th scope="col">Partie 2</th>
+					<th scope="col">Partie 3</th>
+					<th scope="col">Partie 4</th>
+					<th scope="col">Total</th>
+					<th scope="col">Date</th>
+                    <th scope="col">Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for thejoueur in classement %}
+					<tr>
+						<th scope="row"> {{ thejoueur.joueur.pseudo }} </th>
+						<td> {{ thejoueur.joueur.plateforme }}</td>
+						<td> {{ thejoueur.parties.partie1 }}</td>
+						<td> {{ thejoueur.parties.partie2 }}</td>
+						<td> {{ thejoueur.parties.partie3 }}</td>
+						<td> {{ thejoueur.parties.partie4 }}</td>
+						{% set total = thejoueur.parties.partie1 + thejoueur.parties.partie2 + thejoueur.parties.partie3 + thejoueur.parties.partie4 %}
+						<td>{{ total }}</td>
+						<td> {{ thejoueur.parties.date_tournoi }}</td>
+                        <td class="d-flex flex-row justify-content-around align-items-center">
+                            <a href="{{ url('/backoffice/edit-joueur/') ~ thejoueur.joueur.id ~ "/" ~ thejoueur.parties.id }}" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
+                            <a href="{{ url('/backoffice/delete-joueur/') ~ thejoueur.joueur.id }}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Tournoi Realm Royal</h3>
+                <strong>TRL</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="{% if activItem == 'site' %}active{% endif %}">
+                    <a href="{{ url('/') }}" target="_blank">
+                        <i class="fas fa-home"></i>
+                        Le site
+                    </a>
+                </li>
+                <li class="{% if activItem == 'joueurs' %}active{% endif %}">
+                    <a href="{{ url('/backoffice/liste-joueurs') }}">
+                        <i class="fas fa-users"></i>
+                        Les joueurs
+                    </a>
+                </li>
+                <li class="{% if activItem == 'new-joueur' %}active{% endif %}">
+                    <a href="{{ url('/backoffice/new-joueur') }}">
+                        <i class="fas fa-user-plus"></i>
+                        Ajouter un joueur
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('/delog') }}">
+                        <i class="fas fa-key"></i>
+                        Déconnexion
+                    </a>
+                </li>
+            </ul>
+        </nav>

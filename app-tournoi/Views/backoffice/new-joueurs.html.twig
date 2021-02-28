@@ -1,0 +1,23 @@
+{% extends 'backoffice/layout.html.twig' %}
+{% block title %}Nouveau joueur{% endblock %}
+{% block content_back %}
+<div class="container">
+	<h1>Nouveau joueur</h1>
+	<form method="post" action="{{ url('/backoffice/save-joueur') }}">
+        <div class="form-group">
+            <label for="pseudo">Pseudo :</label>
+			<input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" class="form-control">
+        </div>
+        <div class="col mid">
+			<label for="plateforme">Plateforme :</label>
+			<select name="plateforme" id="plateforme"  class="form-control">
+				<option value="ps4">ps4</option>
+				<option value="pc">pc</option>
+				<option value="xbox">xbox</option>
+				<option value="switch">switch</option>
+		    </select>
+		</div>
+        <button type="submit" class="btn btn-primary mt-5">Ajouter</button>
+    </form>
+</div>
+{% endblock %}

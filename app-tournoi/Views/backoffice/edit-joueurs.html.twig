@@ -1,0 +1,43 @@
+{% extends 'backoffice/layout.html.twig' %}
+{% block title %}Edition de joueur{% endblock %}
+{% block content_back %}
+<div class="container">
+	<h1>Edition de {{ joueur.pseudo }}</h1>
+	<form method="post" action="{{ url('/backoffice/update-joueur/') ~ joueur.id ~ '/' ~ partie.id }}">
+        <div class="form-group">
+            <label for="pseudo">Pseudo :</label>
+            <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{ joueur.pseudo }}">
+        </div>
+        <div class="col mid">
+			<label for="plateforme">Plateforme :</label>
+			<select name="plateforme" id="plateforme"  class="form-control">
+				<option value="ps4" {% if joueur.plateforme == "ps4" %} selected {% endif %}>ps4</option>
+				<option value="pc" {% if joueur.plateforme == "pc" %} selected {% endif %}>pc</option>
+				<option value="xbox" {% if joueur.plateforme == "xbox" %} selected {% endif %}>xbox</option>
+				<option value="switch" {% if joueur.plateforme == "switch" %} selected {% endif %}>switch</option>
+			</select>
+		</div>
+        <div class="form-group">
+            <label for="partie1">Partie 1 :</label>
+            <input type="number" class="form-control" id="partie1" name="partie1" value="{{ partie.partie1 }}">
+        </div>
+        <div class="form-group">
+            <label for="partie2">Partie 2 :</label>
+            <input type="number" class="form-control" id="partie2" name="partie2"  value="{{ partie.partie2 }}">
+        </div>
+        <div class="form-group">
+            <label for="partie3">Partie 3 :</label>
+            <input type="number" class="form-control" id="partie3"  name="partie3" value="{{ partie.partie3 }}">
+        </div>
+        <div class="form-group">
+            <label for="partie4">Partie 4 :</label>
+            <input type="number" class="form-control" id="partie4" name="partie4"  value="{{ partie.partie4 }}">
+        </div>
+        <div class="form-group">
+            <label for="date_tournoi">Date du tournoi :</label>
+            <input type="text" class="form-control" id="date_tournoi" name="date_tournoi"  value="{{ partie.date_tournoi }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </form>
+</div>
+{% endblock %}

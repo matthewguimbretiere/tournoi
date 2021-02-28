@@ -1,0 +1,18 @@
+2021-02-18 10:59:30 L95 D:\xampp\htdocs\tournoi\app-tournoi\vendor\nikic\fast-route\src\DataGenerator\RegexBasedAbstract.php:: Static route "/login" is shadowed by previously defined variable route "/([^/]+)" for method "GET"
+2021-02-18 10:43:48 L31 D:\xampp\htdocs\tournoi\app-tournoi\Models\Base.php:: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+
+2021-02-18 10:43:20 L31 D:\xampp\htdocs\tournoi\app-tournoi\Models\Base.php:: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+
+2021-02-18 10:42:59 L31 D:\xampp\htdocs\tournoi\app-tournoi\Models\Base.php:: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+
+2021-02-18 10:41:50 L31 D:\xampp\htdocs\tournoi\app-tournoi\Models\Base.php:: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+
+2021-02-18 10:40:58 L20 D:\xampp\htdocs\tournoi\app-tournoi\bootstrap.php:: Uncaught Whoops\Exception\ErrorException: file_get_contents(D:\xampp\htdocs\tournoi\app-tournoi\Storage\error.log): failed to open stream: No such file or directory in D:\xampp\htdocs\tournoi\app-tournoi\bootstrap.php:20
+Stack trace:
+#0 [internal function]: Whoops\Run->handleError(2, 'file_get_conten...', 'D:\\xampp\\htdocs...', 20, Array)
+#1 D:\xampp\htdocs\tournoi\app-tournoi\bootstrap.php(20): file_get_contents('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\tournoi\app-tournoi\vendor\filp\whoops\src\Whoops\Handler\CallbackHandler.php(50): {closure}(Object(PDOException), Object(Whoops\Exception\Inspector), Object(Whoops\Run))
+#3 D:\xampp\htdocs\tournoi\app-tournoi\vendor\filp\whoops\src\Whoops\Run.php(340): Whoops\Handler\CallbackHandler->handle(Object(PDOException))
+#4 [internal function]: Whoops\Run->handleException(Object(PDOException))
+#5 {main}
+  thrown
